@@ -1,0 +1,26 @@
+  #注册进eureka
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8888/eureka/
+  #配置网关端口号
+  server:
+    port: 8080
+  spring:
+    application:
+      name: gateway-server
+    cloud:
+      gateway:
+        routes:
+          - id: commdity # 路由的id,没有规定规则但要求唯一,建议配合服务名
+            #匹配后提供服务的路由地址
+            # 匹配到的以/customer/开头的路径都转发到order的服务
+            uri: lb://commodity-mall/
+            #          OR uri: http://localhost:8889
+            predicates:
+              - Path=/commdity/**
+            # 去掉匹配到的路径的前2级
+            # http://localhost:8080/commdity/t
+            filters:
+              - StripPrefix=1
+
