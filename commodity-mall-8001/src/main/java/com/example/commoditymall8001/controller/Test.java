@@ -15,12 +15,23 @@ public class Test {
 
     @HystrixCommand(fallbackMethod = "testHystrix")
     @RequestMapping("/t")
+    public String testNormal(){
+        return "hello world!";
+    }
+
+    @HystrixCommand(fallbackMethod = "testHystrix")
+    @RequestMapping("/te")
     public String test() throws Exception {
         throw new Exception("-----------xxxxxxxx-----------");
         //return "hello world!";
     }
 
-    public String testHystrix(){
+    /**
+     * @Description: 测试熔断
+     * @Param: null
+     * @return: null
+     */
+    public String testHystrix() {
         return "testHystrix";
     }
 }
