@@ -46,11 +46,11 @@
             filters:
               - StripPrefix=1
 
-          - id: login
-            uri: lb://login-mall/
+          - id: user
+            uri: lb://user-server/
             predicates:
-              - Path=/login/**
-              # http://localhost:8080/login/d
+              - Path=/user/**
+              # http://localhost:8080/user/d
             filters:
               - StripPrefix=1
 

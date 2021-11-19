@@ -28,7 +28,7 @@ sa-token:
 spring:
   application:
     #    注册进eureka的名字
-    name: login-mall
+    name: user-server
   # redis配置
   redis:
     # Redis数据库索引（默认为0）
