@@ -1,12 +1,48 @@
+mybatis-plus:
+  mapper-locations:
+    classpath: com/example/commoditymall8001/mapper/*.xml
+logging:
+  level:
+    com.example.mybatistest.mapper: debug
 eureka:
   client:
     serviceUrl:
       #      eureka的注册中心地址
-      defaultZone: http://localhost:8888/eureka/
+      defaultZone: http://101.43.35.219:8888/eureka/
+      #defaultZone: http://localhost:8888/eureka/
 server:
   #  此项目端口号
   port: 8001
 spring:
+  logging:
+    config: classpath:logback-spring.xml
+#  level:
+#    com.example.commoditymall8001.mapper: debug
   application:
     #    注册进eureka的名字
     name: commodity-mall
+  datasource:
+    #hikari连接池，springboot2.0后自带,在<spring-boot-starter-jdbc>里
+    type: com.zaxxer.hikari.HikariDataSource
+    #MySQL配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1td3be09v44rhy0qo.mysql.rds.aliyuncs.com/scmall?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: ROOTroot@
+    ##  Hikari 连接池配置 ------ 详细配置请访问：https://github.com/brettwooldridge/HikariCP
+    ## 最小空闲连接数量
+    hikari:
+      minimum-idle: 5
+      ## 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      ## 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      ## 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      ## 连接池名称
+      pool-name: MyHikariCP
+      ## 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      ## 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1

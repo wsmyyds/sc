@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.commoditymall8001.mapper.HomeMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.commoditymall8001.domain.GoodsVO">
+        <id column="id_goods" jdbcType="INTEGER" property="id_goods"/>
+        <result column="name_goods" jdbcType="VARCHAR" property="name_goods"/>
+        <result column="info_goods" jdbcType="VARCHAR" property="info_goods"/>
+        <result column="price_origin" jdbcType="INTEGER" property="price_origin"/>
+        <result column="price_current" jdbcType="INTEGER" property="price_current"/>
+        <result column="imgshow_url_goods" jdbcType="VARCHAR" property="imgshow_url_goods"/>
+        <result column="state_goods" jdbcType="INTEGER" property="state_goods"/>
+    </resultMap>
+
+    <select id="selectNewGoods" resultMap="BaseResultMap">
+        select * from goods where state_goods = '1'
+    </select>
+
+    <select id="selectHotGoods" resultMap="BaseResultMap">
+        select * from goods where state_goods = '2'
+    </select>
+
+    <select id="selectRecommendGoods" resultMap="BaseResultMap">
+        select * from goods where state_goods = '3'
+    </select>
+</mapper>

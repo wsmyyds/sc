@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Test {
 
+
     @HystrixCommand(fallbackMethod = "testHystrix")
     @RequestMapping("/t")
     public String testNormal(){
